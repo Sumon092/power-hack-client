@@ -1,14 +1,16 @@
 import React from 'react';
 
-const TableBody = () => {
+const TableBody = ({ bill, isLoading, refetch, setBill }) => {
+    const { _id, email, fullName, payableAmount, Phone } = bill;
+    console.log(bill);
     return (
         <>
             <tr>
-                <th>_id || "Generating Id"</th>
-                <td>fullName</td>
-                <td>email</td>
-                <td>phone</td>
-                <td>paidAmount</td>
+                <th>{_id || "Generating Id"}</th>
+                <td>{fullName}</td>
+                <td>{email}</td>
+                <td>{Phone}</td>
+                <td>{payableAmount}</td>
                 <td>
                     <label
                         htmlFor="update-modal"

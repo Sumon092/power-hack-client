@@ -7,7 +7,7 @@ const ModalsForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div class="form-control w-full max-w-xs mx-auto">
+            <div className="form-control w-full max-w-xs mx-auto">
                 <input
                     type="text"
                     placeholder="Full name"
@@ -17,18 +17,18 @@ const ModalsForm = () => {
                             message: "FullName is required",
                         },
                     })}
-                    class="input input-bordered w-full max-w-xs input-primary"
+                    className="input input-bordered w-full max-w-xs input-primary"
                 />
-                <label class="label">
+                <label className="label">
                     {errors?.fullName?.type === "required" && (
-                        <span class="label-text-alt text-error">
+                        <span className="label-text-alt text-error">
                             {errors?.fullName?.message}
                         </span>
                     )}
                 </label>
             </div>
 
-            <div class="form-control w-full max-w-xs mx-auto">
+            <div className="form-control w-full max-w-xs mx-auto">
                 <input
                     {...register("email", {
                         required: {
@@ -58,7 +58,7 @@ const ModalsForm = () => {
                 </label>
             </div>
 
-            <div class="form-control w-full max-w-xs mx-auto">
+            <div className="form-control w-full max-w-xs mx-auto">
                 <input
                     type="text"
                     placeholder="Enter Your Phone Number"
@@ -76,28 +76,28 @@ const ModalsForm = () => {
                             message: "Phone Number should be 11 digits",
                         },
                     })}
-                    class="input input-bordered w-full max-w-xs input-primary"
+                    className="input input-bordered w-full max-w-xs input-primary"
                 />
-                <label class="label">
+                <label className="label">
                     {errors?.phone?.type === "required" && (
-                        <span class="label-text-alt text-error">
+                        <span className="label-text-alt text-error">
                             {errors?.phone?.message}
                         </span>
                     )}
                     {errors?.phone?.type === "minLength" && (
-                        <span class="label-text-alt text-error">
+                        <span className="label-text-alt text-error">
                             {errors?.phone?.message}
                         </span>
                     )}
                     {errors?.phone?.type === "maxLength" && (
-                        <span class="label-text-alt text-error">
+                        <span className="label-text-alt text-error">
                             {errors?.phone?.message}
                         </span>
                     )}
                 </label>
             </div>
 
-            <div class="form-control w-full max-w-xs mx-auto">
+            <div className="form-control w-full max-w-xs mx-auto">
                 <input
                     type="number"
                     placeholder="Amount"
@@ -107,11 +107,11 @@ const ModalsForm = () => {
                             message: "Please Enter Amount!",
                         },
                     })}
-                    class="input input-bordered w-full max-w-xs input-primary"
+                    className="input input-bordered w-full max-w-xs input-primary"
                 />
-                <label class="label">
+                <label className="label">
                     {errors?.amount?.type === "required" && (
-                        <span class="label-text-alt text-error">
+                        <span className="label-text-alt text-error">
                             {errors?.amount?.message}
                         </span>
                     )}

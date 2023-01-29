@@ -1,8 +1,37 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import BillingModal from "../../components/Modals/BillingModal";
 import UpdateModal from "../../components/Modals/UpdateModal";
 import TableBody from "../../components/TableBody/TableBody";
 
 const Dashboard = () => {
+  const [setTotal] = useState(0);
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
+  const [bill, setBill] = useState(null);
+
+  const { data, isLoading, refetch } = useQuery(["bills", page, size], () =>
+    axios.get(`/billing-list?page=${page}&size=${size}`)
+      .then((res) => res.data)
+  );
+
+
+  const { data: bills } = useQuery("allBill", () =>
+    axios.get(`/all-bill`).then((res) =>
+      res.data)
+    );
+
+  useEffect(() => {
+    const totalPaid = bills?.reduce(
+      (acc, item) => acc + parseInt(item.payableAmount),
+      0
+    );
+    setTotal(totalPaid);
+    refetch();
+  }, [bills, setTotal, refetch]);
+
+  if (isLoading) <p>Loading...</p>
 
   return (
     <>
@@ -28,8 +57,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div class="overflow-x-auto px-12">
-        <table class="table table-compact w-full">
+      <div className="overflow-x-auto px-12">
+        <table className="table table-compact w-full">
           <thead>
             <tr>
               <th>Billing ID</th>
@@ -41,7 +70,19 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            <TableBody />
+            {
+              data?.map(d => console.log(d))
+            }
+            {
+              data?.map(bill => <TableBody
+                bill={bill}
+                key={bill._id}
+                isLoading={isLoading}
+                refetch={refetch}
+                setBill={setBill}
+              />)
+            }
+
           </tbody>
         </table>
       </div>
