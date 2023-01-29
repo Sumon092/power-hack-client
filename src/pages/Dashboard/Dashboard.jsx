@@ -9,7 +9,7 @@ import TableBody from "../../components/TableBody/TableBody";
 const Dashboard = () => {
   const { setTotal } = useContext(RequireContext);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(10);
+  const [size, setSize] = useState(15);
   const [bill, setBill] = useState(null);
 
   const { data, isLoading, refetch } = useQuery(["bills", page, size], () =>
