@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const TableBody = ({ bill, isLoading, refetch, setBill }) => {
     const { _id, email, fullName, payableAmount, Phone } = bill;
+
+    useEffect(() => {
+        setBill(bill)
+    })
     return (
         <>
             <tr>
@@ -13,6 +17,7 @@ const TableBody = ({ bill, isLoading, refetch, setBill }) => {
                 <td>
                     <label
                         htmlFor="update-modal"
+                        onClick={setBill(bill)}
                         className="btn btn-xs btn-info text-white font-bold mr-2"
                     >
                         Edit

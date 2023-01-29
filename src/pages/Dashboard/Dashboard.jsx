@@ -53,7 +53,7 @@ const Dashboard = () => {
             >
               Add New Bill
             </label>
-            <UpdateModal refetch={refetch} />
+            <UpdateModal refetch={refetch} bill={bill} setBill={setBill} />
             <BillingModal refetch={refetch} />
           </div>
         </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const ModalsForm = ({ handleAddBill }) => {
+const ModalsForm = ({ handleAddAndUpdateBill }) => {
     const {
         register, handleSubmit, formState: { errors }, reset, } = useForm();
 
     const onSubmit = (data) => {
-        handleAddBill(data);
+        handleAddAndUpdateBill(data);
         reset()
     }
 

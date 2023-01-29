@@ -3,7 +3,33 @@ import React from 'react';
 import { toast } from 'react-hot-toast';
 import ModalsForm from './ModalsForm'
 
-const UpdateModal = ({ refetch }) => {
+const UpdateModal = ({ refetch, bill, setBill }) => {
+    const { _id } = bill || {};
+    console.log(_id);
+    const handleAddAndUpdateBill = (data) => {
+        let updateInfo = {
+            fullName: data.fullName,
+            Phone: data.phone,
+            email: data.email,
+            payableAmount: data.payableAmount
+        };
+
+        axios.put(`/update-billing/${_id}`, updateInfo, {
+            headers: {
+                "content-type": "application/json",
+            }
+        })
+            .then(res => {
+                refetch();
+                setBill(null);
+                console.log(res.data);
+                toast.success("Bill updated successfully")
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    };
 
     return (
         <div >
@@ -13,7 +39,7 @@ const UpdateModal = ({ refetch }) => {
                     <h3 className="text-2xl font-folder text-center my-4 uppercase font-semibold">
                         update a Bill
                     </h3>
-                    <ModalsForm />
+                    <ModalsForm handleAddAndUpdateBill={handleAddAndUpdateBill} />
                     <label
                         htmlFor="update-modal"
                         className="btn btn-sm btn-circle absolute right-2 top-2"

@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import ModalsForm from './ModalsForm'
 
 const BillingModal = ({ refetch }) => {
-    const handleAddBill = (data) => {
+    const handleAddAndUpdateBill = (data) => {
         let billInfo = {
             fullName: data.fullName,
             Phone: data.phone,
@@ -36,7 +36,7 @@ const BillingModal = ({ refetch }) => {
                     <h3 className="text-2xl font-folder text-center my-4 uppercase font-semibold">
                         Add New Bill
                     </h3>
-                    <ModalsForm handleAddBill={handleAddBill} />
+                    <ModalsForm handleAddAndUpdateBill={handleAddAndUpdateBill} />
                     <label
                         htmlFor="add-billing-modal"
                         className="btn btn-sm btn-circle absolute right-2 top-2"
