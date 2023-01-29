@@ -13,7 +13,7 @@ const NavBar = () => {
                     <li><Link className='font-bold' to="/login">Login</Link></li>
                 </ul>
                 <ul className="menu menu-horizontal px-1">
-                    <li><Link className='font-bold' to="/register">Register</Link></li>
+                    <li><Link className='font-bold' to="">Logout</Link></li>
                 </ul>
             </div>
         </div>

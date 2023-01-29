@@ -1,4 +1,5 @@
 import BillingModal from "../../components/Modals/BillingModal";
+import UpdateModal from "../../components/Modals/UpdateModal";
 import TableBody from "../../components/TableBody/TableBody";
 
 const Dashboard = () => {
@@ -22,7 +23,8 @@ const Dashboard = () => {
             >
               Add New Bill
             </label>
-              <BillingModal />
+            <UpdateModal />
+            <BillingModal />
           </div>
         </div>
       </div>
