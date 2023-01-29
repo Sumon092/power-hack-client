@@ -1,3 +1,4 @@
+import BillingModal from "../../components/Modals/BillingModal";
 import TableBody from "../../components/TableBody/TableBody";
 
 const Dashboard = () => {
@@ -11,16 +12,17 @@ const Dashboard = () => {
             <input
               type="text"
               placeholder="Search"
-              className="w-full rounded border  focus:bg-transparent text-base outline-none py-1 px-3"
+              className="w-full rounded border  focus:bg-transparent text-base outline-none py-1 px-3 input-primary"
             />
           </form>
           <div>
             <label
-              htmlFor="bill-modal"
+              htmlFor="add-billing-modal"
               className="btn btn-sm btn-primary text-white font-bold mt-2"
             >
               Add New Bill
             </label>
+              <BillingModal />
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const TableBody = () => {
                 <td>paidAmount</td>
                 <td>
                     <label
-                        htmlFor="update-modal"
+                        htmlFor="add-billing-modal"
                         className="btn btn-sm btn-info text-white font-bold mr-2"
                     >
                         Edit
