@@ -5,7 +5,7 @@ import ModalsForm from './ModalsForm'
 
 const UpdateModal = ({ refetch, bill, setBill }) => {
     const { _id } = bill || {};
-    console.log(_id);
+
     const handleAddAndUpdateBill = (data) => {
         let updateInfo = {
             fullName: data.fullName,

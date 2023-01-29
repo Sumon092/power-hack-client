@@ -36,7 +36,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="mb-2 py-2 px-5 overflow-x-auto bg-base-100">
+      <div className="mb-2 py-2 px-5 overflow-x-auto bg-base-100 h-20 flex justify-between items-center">
         <div className=" flex gap-x-3 min-w-max  justify-between items-center">
           <form className="flex gap-3">
             <label className="font-bold text-xl">Billings</label>
@@ -46,16 +46,17 @@ const Dashboard = () => {
               className="w-full rounded border  focus:bg-transparent text-base outline-none py-1 px-3 input-primary"
             />
           </form>
-          <div>
-            <label
-              htmlFor="add-billing-modal"
-              className="btn btn-sm btn-primary text-white font-bold mt-2"
-            >
-              Add New Bill
-            </label>
-            <UpdateModal refetch={refetch} bill={bill} setBill={setBill} />
-            <BillingModal refetch={refetch} />
-          </div>
+
+        </div>
+        <div>
+          <label
+            htmlFor="add-billing-modal"
+            className="btn btn-sm btn-primary text-white font-bold mt-2"
+          >
+            Add New Bill
+          </label>
+          <UpdateModal refetch={refetch} bill={bill} setBill={setBill} />
+          <BillingModal refetch={refetch} />
         </div>
       </div>
       <div className="overflow-x-auto px-12">
