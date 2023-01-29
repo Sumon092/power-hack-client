@@ -4,7 +4,6 @@ import Swal from 'sweetalert2';
 
 const TableBody = ({ bill, isLoading, refetch, setBill }) => {
     const { _id, email, fullName, payableAmount, Phone } = bill;
-    console.log(_id);
     const handleDeleteBill = async (_id) => {
         try {
             const confirm = await Swal.fire({

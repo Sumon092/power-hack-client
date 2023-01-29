@@ -1,18 +1,43 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 const Login = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const navigate = useNavigate()
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
+    const handleLogin = async (data) => {
+        axios
+            .post("/login", JSON.stringify(data), {
+                headers: {
+                    "content-type": "application/json"
+                }
+            })
+            .then(res => {
+                if (res.data.status === 200) {
+                    console.log(res.data);
+                    toast.success("Successfully logged in!");
+                    localStorage.setItem("accessToken", res.data.token);
+                    navigate("/");
+                    reset();
+                } else {
+                    toast.error("Wrong Credential");
+                    reset();
+                }
+            });
+    };
+
 
     return (
         <div className='flex h-screen justify-center items-center'>
             <div className="card shadow-xl bg-white bg-opacity-10 rounded-2xl shadow-5xl border border-opacity-30 border-r-0 border-b-0 flex flex-col justify-start items-center">
                 <div className="card-body w-96">
                     <h2 className="text-center text-2xl font-bold text-white mb-10">Login</h2>
-                    <form onSubmit={handleSubmit()}>
+                    <form onSubmit={handleSubmit(handleLogin)}>
                         <div className="form-control w-full max-w-sm">
                             <input
                                 type="email"
