@@ -14,12 +14,12 @@ const TableBody = ({ bill, isLoading, refetch, setBill }) => {
                 <td>
                     <label
                         htmlFor="update-modal"
-                        className="btn btn-sm btn-info text-white font-bold mr-2"
+                        className="btn btn-xs btn-info text-white font-bold mr-2"
                     >
                         Edit
                     </label>
                     <label
-                        className="btn btn-sm btn-error text-white font-bold"
+                        className="btn btn-xs btn-error text-white font-bold"
                     >
                         Delete
                     </label>

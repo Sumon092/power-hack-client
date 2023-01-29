@@ -1,12 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import { RequireContext } from "../../App";
 import BillingModal from "../../components/Modals/BillingModal";
 import UpdateModal from "../../components/Modals/UpdateModal";
 import TableBody from "../../components/TableBody/TableBody";
 
 const Dashboard = () => {
-  const [setTotal] = useState(0);
+  const { setTotal } = useContext(RequireContext);
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(10);
   const [bill, setBill] = useState(null);
@@ -20,7 +21,7 @@ const Dashboard = () => {
   const { data: bills } = useQuery("allBill", () =>
     axios.get(`/all-bill`).then((res) =>
       res.data)
-    );
+  );
 
   useEffect(() => {
     const totalPaid = bills?.reduce(
