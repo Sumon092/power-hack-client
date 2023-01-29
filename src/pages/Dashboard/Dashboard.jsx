@@ -53,8 +53,8 @@ const Dashboard = () => {
             >
               Add New Bill
             </label>
-            <UpdateModal />
-            <BillingModal />
+            <UpdateModal refetch={refetch} />
+            <BillingModal refetch={refetch} />
           </div>
         </div>
       </div>
@@ -71,9 +71,6 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              data?.map(d => console.log(d))
-            }
             {
               data?.map(bill => <TableBody
                 bill={bill}

@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import Login from './Auth/Login/Login';
 import Register from './Auth/Register/Register';
@@ -10,6 +11,7 @@ function App() {
   const [total, setTotal] = useState(0)
   return (
     <div className='h-screen flex flex-col  bg-gray-900'>
+      <Toaster />
       <RequireContext.Provider value={{ total, setTotal }}>
         <NavBar />
         <Routes>

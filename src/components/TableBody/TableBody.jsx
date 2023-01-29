@@ -2,7 +2,6 @@ import React from 'react';
 
 const TableBody = ({ bill, isLoading, refetch, setBill }) => {
     const { _id, email, fullName, payableAmount, Phone } = bill;
-    console.log(bill);
     return (
         <>
             <tr>

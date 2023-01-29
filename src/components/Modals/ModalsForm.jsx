@@ -1,12 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const ModalsForm = () => {
+const ModalsForm = ({ handleAddBill }) => {
     const {
         register, handleSubmit, formState: { errors }, reset, } = useForm();
 
+    const onSubmit = (data) => {
+        handleAddBill(data);
+        reset()
+    }
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs mx-auto">
                 <input
                     type="text"
@@ -100,8 +105,8 @@ const ModalsForm = () => {
             <div className="form-control w-full max-w-xs mx-auto">
                 <input
                     type="number"
-                    placeholder="Amount"
-                    {...register("amount", {
+                    placeholder="Enter Amount"
+                    {...register("payableAmount", {
                         required: {
                             value: true,
                             message: "Please Enter Amount!",
@@ -110,9 +115,9 @@ const ModalsForm = () => {
                     className="input input-bordered w-full max-w-xs input-primary"
                 />
                 <label className="label">
-                    {errors?.amount?.type === "required" && (
+                    {errors?.payableAmount?.type === "required" && (
                         <span className="label-text-alt text-error">
-                            {errors?.amount?.message}
+                            {errors?.payableAmount?.message}
                         </span>
                     )}
                 </label>

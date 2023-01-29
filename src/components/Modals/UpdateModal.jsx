@@ -1,7 +1,10 @@
+import axios from 'axios';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import ModalsForm from './ModalsForm'
 
-const updateModal = () => {
+const UpdateModal = ({ refetch }) => {
+
     return (
         <div >
             <input type="checkbox" id="update-modal" className="modal-toggle" />
@@ -23,4 +26,4 @@ const updateModal = () => {
     );
 };
 
-export default updateModal;
+export default UpdateModal;
