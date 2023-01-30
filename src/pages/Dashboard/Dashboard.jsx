@@ -87,7 +87,7 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((bill) => (
+            {data && !isLoading && data?.length > 0 && data?.map((bill) => (
               <TableBody
                 bill={bill}
                 key={bill._id}
