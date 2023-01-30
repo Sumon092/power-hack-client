@@ -9,8 +9,9 @@ import TableBody from "../../components/TableBody/TableBody";
 const Dashboard = () => {
   const { setTotal } = useContext(RequireContext);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(15);
+  const [size, setSize] = useState(10);
   const [bill, setBill] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
 
   const { data, isLoading, refetch } = useQuery(["bills", page, size], () =>
     axios.get(`/billing-list?page=${page}&size=${size}`)
@@ -31,6 +32,17 @@ const Dashboard = () => {
     setTotal(totalPaid);
     refetch();
   }, [bills, setTotal, refetch]);
+
+  useEffect(() => {
+    fetch(`/billing-list`)
+      .then((res) => res.json())
+      .then((data) => {
+        const count = data.count;
+        const pages = Math.ceil(count / 10);
+        setPageCount(pages);
+        refetch();
+      });
+  }, [refetch]);
 
   if (isLoading) <p>Loading...</p>
 
@@ -73,7 +85,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {
-              data?.map(bill => <TableBody
+              data?.slice(0).reverse().map(bill => <TableBody
                 bill={bill}
                 key={bill._id}
                 isLoading={isLoading}
@@ -85,7 +97,28 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
-      <div className="text-end mr-28 my-4 pagination">
+      <div className="text-center pagination">
+        {
+          (pageCount > 0)
+            ? [...Array(pageCount).keys()].map((num, index) => (
+              <button
+                key={index}
+                onClick={() => setPage(num)}
+                className="btn btn-lg btn-warning  font-bold mr-1"
+              >
+                {num + 1}
+              </button>
+            ))
+            : null
+
+        }
+
+      </div>
+      <div className="btn-group flex justify-center">
+        <button className="btn btn-xs"></button>
+        <button className="btn btn-xs btn-active">2</button>
+        <button className="btn btn-xs">3</button>
+        <button className="btn btn-xs">4</button>
       </div>
     </>
   );

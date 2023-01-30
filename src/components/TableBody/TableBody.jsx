@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { FaRegTrashAlt, FaPencilAlt } from "react-icons/fa";
 
 const TableBody = ({ bill, isLoading, refetch, setBill }) => {
     const { _id, email, fullName, payableAmount, Phone } = bill;
@@ -43,19 +44,19 @@ const TableBody = ({ bill, isLoading, refetch, setBill }) => {
                 <td>{email}</td>
                 <td>{Phone}</td>
                 <td>{payableAmount}</td>
-                <td>
+                <td className='flex'>
                     <label
                         htmlFor="update-modal"
                         onClick={() => setBill(bill)}
-                        className="btn btn-xs btn-info text-white font-bold mr-2"
+                        className="text-info font-bold mr-2 text-xl"
                     >
-                        Edit
+                        {<FaPencilAlt />}
                     </label>
                     <label
                         onClick={() => handleDeleteBill(_id)}
-                        className="btn btn-xs btn-error text-white font-bold"
+                        className=" text-red-600 text-xl font-bold mx-5"
                     >
-                        Delete
+                        {<FaRegTrashAlt />}
                     </label>
                 </td>
             </tr>

@@ -4,15 +4,17 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './Auth/Login/Login';
 import Register from './Auth/Register/Register';
 import NavBar from './components/NavBar/NavBar';
+import useAuth from './Hooks/useAuth';
 import Dashboard from './pages/Dashboard/Dashboard';
 export const RequireContext = createContext(null);
 
 function App() {
   const [total, setTotal] = useState(0)
+  const { auth, refetch, user } = useAuth();
   return (
     <div className='h-screen flex flex-col  bg-gray-900'>
       <Toaster />
-      <RequireContext.Provider value={{ total, setTotal }}>
+      <RequireContext.Provider value={{ total, setTotal, auth, refetch, user }}>
         <NavBar />
         <Routes>
           <Route path="/login" element={<Login />}></Route>
