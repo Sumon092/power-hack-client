@@ -48,7 +48,7 @@ const Dashboard = () => {
       });
   }, [refetch]);
 
-  if (!data && isLoading) {
+  if (data === undefined && isLoading) {
     <p>Loading...</p>
   }
 
@@ -90,7 +90,7 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((bill) => (
+            {Array.isArray(data) && !data === isLoading && data?.map((bill) => (
               <TableBody
                 bill={bill}
                 key={bill._id}
