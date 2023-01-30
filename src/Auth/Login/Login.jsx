@@ -13,12 +13,11 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const handleLogin = async (data) => {
-        axios
-            .post("/login", JSON.stringify(data), {
-                headers: {
-                    "content-type": "application/json"
-                }
-            })
+        axios.post("/login", JSON.stringify(data), {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
             .then(res => {
                 if (res.data.status === 200) {
                     console.log(res.data);

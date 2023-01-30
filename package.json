@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.6",
     "daisyui": "^2.49.0",
-    "firebase": "^9.16.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.1",
@@ -47,5 +46,5 @@
   "devDependencies": {
     "tailwindcss": "^3.2.4"
   },
-  "proxy": "http://localhost:8000/api/"
+  "proxy": "https://power-hack-server-drab.vercel.app/api/"
 }

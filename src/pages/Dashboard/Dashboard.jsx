@@ -17,7 +17,7 @@ const Dashboard = () => {
     axios.get(`/billing-list?page=${page}&size=${size}`)
       .then((res) => res.data)
   );
-  console.log(data)
+
 
 
 

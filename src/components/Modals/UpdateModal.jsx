@@ -16,8 +16,8 @@ const UpdateModal = ({ refetch, bill, setBill }) => {
 
         axios.put(`/update-billing/${_id}`, updateInfo, {
             headers: {
-                "content-type": "application/json",
-            }
+                'Content-Type': 'application/json'
+            },
         })
             .then(res => {
                 refetch();

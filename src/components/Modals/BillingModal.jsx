@@ -14,8 +14,8 @@ const BillingModal = ({ refetch }) => {
 
         axios.post("/add-billing", billInfo, {
             headers: {
-                "content-type": "application/json",
-            }
+                'Content-Type': 'application/json'
+            },
         })
             .then((result) => {
                 if (result.data.status === 200) {

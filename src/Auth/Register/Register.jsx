@@ -15,7 +15,7 @@ const Register = () => {
         try {
             const response = await axios.post("/registration", JSON.stringify(data), {
                 headers: {
-                    "content-type": "application/json",
+                    'Content-Type': 'application/json'
                 },
             });
 
