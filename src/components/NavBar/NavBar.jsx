@@ -6,7 +6,7 @@ import useAuth from '../../pages/Dashboard/hooks/useAuth';
 
 const NavBar = () => {
     const { total } = useContext(RequireContext)
-    const { auth, user } = useAuth();
+    const { auth } = useAuth();
     const token = localStorage.getItem("accessToken");
 
 

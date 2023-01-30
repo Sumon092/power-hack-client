@@ -7,7 +7,7 @@ const useAuth = () => {
     const { data, isLoading, refetch } = useQuery(
         "User",
         async () =>
-            await fetch(`https://power-hack-server-drab.vercel.app/api/users`, {
+            await fetch(`http://localhost:8000/api/users`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 },
