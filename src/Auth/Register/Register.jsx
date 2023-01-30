@@ -13,7 +13,7 @@ const Register = () => {
 
     const handleRegister = async (data) => {
         try {
-            const response = await axios.post("https://power-hack-server-drab.vercel.app/api/registration", JSON.stringify(data), {
+            const response = await axios.post("http://localhost:8000/api/registration", JSON.stringify(data), {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -26,7 +26,7 @@ const Register = () => {
                 reset();
             } else {
                 toast.success("Successfully Registered!");
-                localStorage.setItem("accessToken", result.token);
+                localStorage.setItem("accessToken", result.accessToken);
                 navigate("/");
                 reset();
             }

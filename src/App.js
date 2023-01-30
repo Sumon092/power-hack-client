@@ -3,8 +3,8 @@ import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import Login from './Auth/Login/Login';
 import Register from './Auth/Register/Register';
+import RequireAuth from './Auth/RequireAuth/RequireAuth';
 import NavBar from './components/NavBar/NavBar';
-// import useAuth from './Hooks/useAuth';
 import Dashboard from './pages/Dashboard/Dashboard';
 export const RequireContext = createContext(null);
 
@@ -18,6 +18,14 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/login" element={<Login />}></Route>
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          ></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/" element={<Dashboard />}></Route>
         </Routes>
