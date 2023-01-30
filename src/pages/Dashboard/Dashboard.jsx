@@ -9,20 +9,17 @@ import TableBody from "../../components/TableBody/TableBody";
 const Dashboard = () => {
   const { setTotal } = useContext(RequireContext);
   const [page, setPage] = useState(0);
-  const [size, setSize] = useState(10);
+  const [size] = useState(10);
   const [bill, setBill] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [query, setQuery] = useState('')
 
-  const { data, isLoading, refetch } = useQuery(["bills", page, size], () =>
+  const { data, isLoading, refetch: refetch2 } = useQuery(["bills", page, size], () =>
     axios.get(`https://power-hack-server-drab.vercel.app/api/billing-list?page=${page}&size=${size}`)
       .then((res) => res.data)
   );
 
-
-
-
-  const { data: bills } = useQuery("allBill", () =>
+  const { data: bills, refetch } = useQuery("allBill", () =>
     axios.get(`https://power-hack-server-drab.vercel.app/api/all-bill`).then((res) =>
       res.data)
   );
@@ -41,13 +38,13 @@ const Dashboard = () => {
     fetch(`https://power-hack-server-drab.vercel.app/api/billing-list`)
       .then((res) => res.json())
       .then((item) => {
-        console.log(item);
+        // console.log(item);
         const count = parseInt(item?.length)
         const pages = Math.ceil(count / 10);
         setPageCount(pages);
-        refetch();
+        refetch2();
       });
-  }, [refetch]);
+  }, [refetch2]);
 
   if (data === undefined && isLoading) {
     <p>Loading...</p>
@@ -95,7 +92,7 @@ const Dashboard = () => {
           <tbody>
 
             {Array.isArray(data) && !data === isLoading &&
-              data?.filter((bill) => bill?.email?.toLowerCase().includes(query) || bill?.fullName?.toLowerCase().includes(query) || bill?.Phone?.toLowerCase().includes(query)).map(bill => (
+              data?.slice(0).reverse().filter((bill) => bill?.email?.toLowerCase().includes(query) || bill?.fullName?.toLowerCase().includes(query) || bill?.Phone?.toLowerCase().includes(query)).map(bill => (
                 <TableBody
                   bill={bill}
                   key={bill._id}
@@ -109,7 +106,7 @@ const Dashboard = () => {
         </table>
       </div>
       <div className="text-center pagination">
-        {
+        {pageCount > 0 &&
           [...Array(pageCount).keys()].map((num, index) => (
             <button
               key={index}

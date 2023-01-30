@@ -16,7 +16,8 @@ const UpdateModal = ({ refetch, bill, setBill }) => {
 
         axios.put(`https://power-hack-server-drab.vercel.app/api/update-billing/${_id}`, updateInfo, {
             headers: {
-                'Content-Type': 'application/json'
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                "Content-type": "application/json",
             },
         })
             .then(res => {

@@ -7,7 +7,7 @@ import useAuth from '../../pages/Dashboard/hooks/useAuth';
 const NavBar = () => {
     const { total } = useContext(RequireContext)
     const { auth } = useAuth();
-    const token = localStorage.getItem("accessToken");
+
 
 
     const handleLogout = () => {
@@ -23,11 +23,12 @@ const NavBar = () => {
             </div>
             <div className="flex-none">
                 {
-                    token && <h2 className='font-bold mx-14'>Total Paid : {total}</h2>
+                    auth && <h2 className='font-bold mx-14'>Total Paid : {total}</h2>
                 }
 
+
                 {
-                    token ? <ul className="menu menu-horizontal px-1 text-lg">
+                    auth ? <ul className="menu menu-horizontal px-1 text-lg">
                         <li><Link onClick={handleLogout} className='font-bold' to="">Logout</Link></li>
                     </ul> : <ul className="menu menu-horizontal px-1">
                         <li><button className='font-bold text-lg' to="/login">Login</button></li>

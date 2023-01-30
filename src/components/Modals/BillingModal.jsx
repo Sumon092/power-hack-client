@@ -14,7 +14,8 @@ const BillingModal = ({ refetch }) => {
 
         axios.post("https://power-hack-server-drab.vercel.app/api/add-billing", billInfo, {
             headers: {
-                'Content-Type': 'application/json'
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                "Content-type": "application/json",
             },
         })
             .then((result) => {

@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { FaRegTrashAlt, FaPencilAlt } from "react-icons/fa";
 
-const TableBody = ({ bill, isLoading, refetch, setBill }) => {
+
+const TableBody = ({ bill, refetch, setBill }) => {
     const _id = bill?._id;
+
+
     const handleDeleteBill = async (_id) => {
         try {
             const confirm = await Swal.fire({
@@ -19,7 +21,7 @@ const TableBody = ({ bill, isLoading, refetch, setBill }) => {
 
             if (confirm.isConfirmed) {
                 const url = `https://power-hack-server-drab.vercel.app/api/delete-bill/${_id}`;
-                const res = await axios.delete(url, {
+                await axios.delete(url, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                         "Content-type": "application/json",
@@ -48,13 +50,13 @@ const TableBody = ({ bill, isLoading, refetch, setBill }) => {
                     <label
                         htmlFor="update-modal"
                         onClick={() => setBill(bill)}
-                        className="text-info font-bold mr-2 text-xl"
+                        className="text-info font-bold mr-2 text-xl cursor-pointer"
                     >
                         {<FaPencilAlt />}
                     </label>
                     <label
                         onClick={() => handleDeleteBill(_id)}
-                        className=" text-red-600 text-xl font-bold mx-5"
+                        className=" text-red-600 text-xl font-bold mx-5 cursor-pointer"
                     >
                         {<FaRegTrashAlt />}
                     </label>

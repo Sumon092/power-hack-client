@@ -13,6 +13,7 @@ const useAuth = () => {
                 },
             }).then((res) => res.json())
     );
+    console.log(data)
     useEffect(() => {
         if (data) {
             setAuth(true);
@@ -21,7 +22,9 @@ const useAuth = () => {
             setAuth(false);
         }
     }, [data]);
+    console.log(auth, refetch, user);
     return { auth, refetch, user, isLoading };
+
 };
 
 export default useAuth;
