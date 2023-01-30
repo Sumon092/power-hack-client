@@ -6,6 +6,7 @@ import useAuth from '../../Hooks/useAuth';
 const NavBar = () => {
     const { total } = useContext(RequireContext)
     const { auth, refetch } = useAuth();
+    console.log(auth);
     const handleLogout = () => {
         localStorage.removeItem("accessToken");
         refetch();

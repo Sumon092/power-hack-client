@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
@@ -8,14 +7,15 @@ const useAuth = () => {
     const { data, isLoading, refetch } = useQuery(
         "User",
         async () =>
-            await axios.get("/users", {
+            await fetch(`/users`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 },
-            })
+            }).then((res) => res.json())
     );
     useEffect(() => {
         if (data) {
+            console.log(data);
             setAuth(true);
             setUser(data?.email);
         } else {

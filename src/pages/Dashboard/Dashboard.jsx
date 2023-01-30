@@ -85,7 +85,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {
-              data?.slice(0).reverse().map(bill => <TableBody
+              data?.slice(0)?.reverse()?.map(bill => <TableBody
                 bill={bill}
                 key={bill._id}
                 isLoading={isLoading}
