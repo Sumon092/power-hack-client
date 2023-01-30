@@ -17,6 +17,7 @@ const Dashboard = () => {
     axios.get(`/billing-list?page=${page}&size=${size}`)
       .then((res) => res.data)
   );
+  console.log(data.length);
 
 
   const { data: bills } = useQuery("allBill", () =>
@@ -36,15 +37,17 @@ const Dashboard = () => {
   useEffect(() => {
     fetch(`/billing-list`)
       .then((res) => res.json())
-      .then((data) => {
-        const count = data.count;
+      .then((item) => {
+        const count = item.count;
         const pages = Math.ceil(count / 10);
         setPageCount(pages);
         refetch();
       });
   }, [refetch]);
 
-  if (isLoading) <p>Loading...</p>
+  if (!data && isLoading && data.length < 0) {
+    <p>Loading...</p>
+  }
 
   return (
     <>
