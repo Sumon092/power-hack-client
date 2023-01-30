@@ -14,7 +14,7 @@ const UpdateModal = ({ refetch, bill, setBill }) => {
             payableAmount: data.payableAmount
         };
 
-        axios.put(`http://localhost:8000/api/update-billing/${_id}`, updateInfo, {
+        axios.put(`https://power-hack-server-drab.vercel.app/api/update-billing/${_id}`, updateInfo, {
             headers: {
                 'Content-Type': 'application/json'
             },
