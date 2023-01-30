@@ -18,7 +18,7 @@ const TableBody = ({ bill, isLoading, refetch, setBill }) => {
             });
 
             if (confirm.isConfirmed) {
-                const url = `/delete-bill/${_id}`;
+                const url = `https://power-hack-server-drab.vercel.app/api/delete-bill/${_id}`;
                 const res = await axios.delete(url, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

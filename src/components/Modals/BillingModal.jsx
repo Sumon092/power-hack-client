@@ -12,7 +12,7 @@ const BillingModal = ({ refetch }) => {
             payableAmount: data.payableAmount
         };
 
-        axios.post("/add-billing", billInfo, {
+        axios.post("https://power-hack-server-drab.vercel.app/api/add-billing", billInfo, {
             headers: {
                 'Content-Type': 'application/json'
             },

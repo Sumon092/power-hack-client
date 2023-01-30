@@ -45,6 +45,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.4"
-  },
-  "proxy": "https://power-hack-server-drab.vercel.app/api/"
+  }
 }

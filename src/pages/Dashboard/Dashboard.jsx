@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [pageCount, setPageCount] = useState(0);
 
   const { data, isLoading, refetch } = useQuery(["bills", page, size], () =>
-    axios.get(`/billing-list?page=${page}&size=${size}`)
+    axios.get(`https://power-hack-server-drab.vercel.app/api/billing-list?page=${page}&size=${size}`)
       .then((res) => res.data)
   );
 
@@ -38,7 +38,7 @@ const Dashboard = () => {
   }, [bills, setTotal, refetch, isLoading]);
 
   useEffect(() => {
-    fetch(`/billing-list`)
+    fetch(`https://power-hack-server-drab.vercel.app/api/billing-list`)
       .then((res) => res.json())
       .then((item) => {
         const count = item.count;
