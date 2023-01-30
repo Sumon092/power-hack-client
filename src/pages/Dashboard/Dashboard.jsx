@@ -98,20 +98,19 @@ const Dashboard = () => {
         </table>
       </div>
       <div className="text-center pagination">
-        {
-          (pageCount > 0)
-            ? [...Array(pageCount).keys()].map((num, index) => (
+        {/* {
+           [...Array(pageCount).keys()].map((num, index) => (
               <button
                 key={index}
                 onClick={() => setPage(num)}
                 className="btn btn-lg btn-warning  font-bold mr-1"
               >
                 {num + 1}
+                <p>pagination</p>
               </button>
             ))
-            : null
 
-        }
+        } */}
 
       </div>
       <div className="btn-group flex justify-center">
