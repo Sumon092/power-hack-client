@@ -3,13 +3,13 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../../Hooks/useAuth';
+// import useAuth from '../../Hooks/useAuth';
 
 
 
 const Login = () => {
     const navigate = useNavigate()
-    const { refetch } = useAuth()
+    // const { refetch } = useAuth()
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const handleLogin = async (data) => {

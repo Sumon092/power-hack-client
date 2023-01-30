@@ -87,7 +87,7 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {data?.map((bill) => (
+            {data?.map((bill) => (
               <TableBody
                 bill={bill}
                 key={bill._id}
@@ -95,7 +95,7 @@ const Dashboard = () => {
                 refetch={refetch}
                 setBill={setBill}
               />
-            ))} */}
+            ))}
 
           </tbody>
         </table>
