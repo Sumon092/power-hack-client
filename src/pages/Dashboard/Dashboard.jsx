@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [query, setQuery] = useState('')
 
   const { data, isLoading, refetch } = useQuery(["bills", page, size], () =>
-    axios.get(`http://localhost:8000/api/billing-list?page=${page}&size=${size}`)
+    axios.get(`https://power-hack-server-drab.vercel.app/api/billing-list?page=${page}&size=${size}`)
       .then((res) => res.data)
   );
 
@@ -23,7 +23,7 @@ const Dashboard = () => {
 
 
   const { data: bills } = useQuery("allBill", () =>
-    axios.get(`http://localhost:8000/api/all-bill`).then((res) =>
+    axios.get(`https://power-hack-server-drab.vercel.app/api/all-bill`).then((res) =>
       res.data)
   );
 
@@ -38,10 +38,11 @@ const Dashboard = () => {
   }, [bills, setTotal, refetch, isLoading]);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/billing-list`)
+    fetch(`https://power-hack-server-drab.vercel.app/api/billing-list`)
       .then((res) => res.json())
       .then((item) => {
-        const count = item.count;
+        console.log(item);
+        const count = parseInt(item?.length)
         const pages = Math.ceil(count / 10);
         setPageCount(pages);
         refetch();
@@ -108,26 +109,19 @@ const Dashboard = () => {
         </table>
       </div>
       <div className="text-center pagination">
-        {/* {
-           [...Array(pageCount).keys()].map((num, index) => (
-              <button
-                key={index}
-                onClick={() => setPage(num)}
-                className="btn btn-lg btn-warning  font-bold mr-1"
-              >
-                {num + 1}
-                <p>pagination</p>
-              </button>
-            ))
+        {
+          [...Array(pageCount).keys()].map((num, index) => (
+            <button
+              key={index}
+              onClick={() => setPage(num)}
+              className="btn btn-md btn-accent font-bold mr-1 mt-5 mb-2"
+            >
+              {num + 1}
+            </button>
+          ))
 
-        } */}
+        }
 
-      </div>
-      <div className="btn-group flex justify-center">
-        <button className="btn btn-xs"></button>
-        <button className="btn btn-xs btn-active">2</button>
-        <button className="btn btn-xs">3</button>
-        <button className="btn btn-xs">4</button>
       </div>
     </>
   );

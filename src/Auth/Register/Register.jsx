@@ -13,7 +13,7 @@ const Register = () => {
 
     const handleRegister = async (data) => {
         try {
-            const response = await axios.post("http://localhost:8000/api/registration", JSON.stringify(data), {
+            const response = await axios.post("https://power-hack-server-drab.vercel.app/api/registration", JSON.stringify(data), {
                 headers: {
                     'Content-Type': 'application/json'
                 },

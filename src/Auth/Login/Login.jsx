@@ -13,7 +13,7 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const handleLogin = async (data) => {
-        axios.post("http://localhost:8000/api/login", JSON.stringify(data), {
+        axios.post("https://power-hack-server-drab.vercel.app/api/login", JSON.stringify(data), {
             headers: {
                 "Content-type": "application/json"
             }
