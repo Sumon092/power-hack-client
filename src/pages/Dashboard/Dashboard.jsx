@@ -83,18 +83,18 @@ const Dashboard = () => {
               <th>Action</th>
             </tr>
           </thead>
-          {!isLoading && data.length > 0 && <tbody>
-            {
-              data?.map(bill => <TableBody
+          <tbody>
+            {data?.map((bill) => (
+              <TableBody
                 bill={bill}
                 key={bill._id}
                 isLoading={isLoading}
                 refetch={refetch}
                 setBill={setBill}
-              />)
-            }
+              />
+            ))}
 
-          </tbody>}
+          </tbody>
         </table>
       </div>
       <div className="text-center pagination">
