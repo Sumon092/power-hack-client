@@ -45,7 +45,7 @@ const Dashboard = () => {
       });
   }, [refetch]);
 
-  if (!data && isLoading && data.length < 0) {
+  if (!data && isLoading && data?.length < 0) {
     <p>Loading...</p>
   }
 
