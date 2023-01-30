@@ -83,7 +83,7 @@ const Dashboard = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          {!isLoading && data.length > 0 && <tbody>
             {
               data?.map(bill => <TableBody
                 bill={bill}
@@ -94,7 +94,7 @@ const Dashboard = () => {
               />)
             }
 
-          </tbody>
+          </tbody>}
         </table>
       </div>
       <div className="text-center pagination">
