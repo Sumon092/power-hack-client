@@ -20,7 +20,7 @@ const NavBar = () => {
             </div>
             <div className="flex-none">
                 {
-                    "auth" && <h2 className='font-bold mx-14'>Total Paid : {total}</h2>
+                    <h2 className='font-bold mx-14'>Total Paid : {total}</h2>
                 }
 
                 {

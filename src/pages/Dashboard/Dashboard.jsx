@@ -22,18 +22,17 @@ const Dashboard = () => {
 
 
   const { data: bills } = useQuery("allBill", () =>
-    axios.get(`/all-bill`).then((res) =>
+    axios.get(`https://power-hack-server-drab.vercel.app/api/all-bill`).then((res) =>
       res.data)
   );
 
   useEffect(() => {
-    if (!bills === undefined && !bills === isLoading) {
-      const totalPaid = bills?.reduce(
-        (acc, item) => acc + parseInt(item.payableAmount),
-        0
-      );
-      setTotal(totalPaid);
-    }
+
+    const totalPaid = bills?.reduce(
+      (acc, item) => acc + parseInt(item?.payableAmount),
+      0
+    );
+    setTotal(totalPaid);
     refetch();
   }, [bills, setTotal, refetch, isLoading]);
 
