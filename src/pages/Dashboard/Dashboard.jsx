@@ -17,7 +17,7 @@ const Dashboard = () => {
     axios.get(`/billing-list?page=${page}&size=${size}`)
       .then((res) => res.data)
   );
-  // console.log(data)
+  console.log(data)
 
 
 
@@ -90,7 +90,7 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(data) && !data === undefined && !data === isLoading && data?.map((bill) => (
+            {data?.map((bill) => (
               <TableBody
                 bill={bill}
                 key={bill._id}

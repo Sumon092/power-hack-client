@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { FaRegTrashAlt, FaPencilAlt } from "react-icons/fa";
 
 const TableBody = ({ bill, isLoading, refetch, setBill }) => {
-    const { _id, email, fullName, payableAmount, Phone } = bill;
+    const _id = bill?._id;
     const handleDeleteBill = async (_id) => {
         try {
             const confirm = await Swal.fire({
@@ -26,7 +26,7 @@ const TableBody = ({ bill, isLoading, refetch, setBill }) => {
                     },
                 });
 
-                console.log(res.data);
+                // console.log(res.data);
                 refetch();
                 Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
@@ -39,11 +39,11 @@ const TableBody = ({ bill, isLoading, refetch, setBill }) => {
     return (
         <>
             <tr>
-                <th>{_id || "Generating Id"}</th>
-                <td>{fullName}</td>
-                <td>{email}</td>
-                <td>{Phone}</td>
-                <td>{payableAmount}</td>
+                <th>{bill?._id || "Generating Id"}</th>
+                <td>{bill?.fullName}</td>
+                <td>{bill?.email}</td>
+                <td>{bill?.Phone}</td>
+                <td>{bill?.payableAmount}</td>
                 <td className='flex'>
                     <label
                         htmlFor="update-modal"
