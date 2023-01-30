@@ -17,7 +17,7 @@ const Dashboard = () => {
     axios.get(`/billing-list?page=${page}&size=${size}`)
       .then((res) => res.data)
   );
-  console.log(data)
+  // console.log(data)
 
 
 
@@ -27,13 +27,15 @@ const Dashboard = () => {
   );
 
   useEffect(() => {
-    const totalPaid = bills?.reduce(
-      (acc, item) => acc + parseInt(item.payableAmount),
-      0
-    );
-    setTotal(totalPaid);
+    if (!bills === undefined && !bills === isLoading) {
+      const totalPaid = bills?.reduce(
+        (acc, item) => acc + parseInt(item.payableAmount),
+        0
+      );
+      setTotal(totalPaid);
+    }
     refetch();
-  }, [bills, setTotal, refetch]);
+  }, [bills, setTotal, refetch, isLoading]);
 
   useEffect(() => {
     fetch(`/billing-list`)
